@@ -4,11 +4,23 @@ using namespace std;
 
 int rn(int y);
 int dc(int y,int m,int d);
+int md(int y,int m);
+
 
 int main()
 {
-    int y,m,d,md;
+    int y,m,d;
     cin>>y>>m>>d;
+    if (d >= 1 && d <= md(y,m) && y > 0 && m >= 1 && m <= 12)
+    {
+        printf("这是%i年的第%i天", y,dc(y,m,d));
+    }
+    else printf("日期有误");
+}
+
+int md(int y,int m)
+{
+    int md;
     if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) md=31;
     else if (m == 4 || m == 6 || m == 9 || m == 11) md=30;
     else 
@@ -16,22 +28,8 @@ int main()
         if (rn(y) == 1) md=29;
         else md=28;
     }
+    return md;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 int dc(int y,int m,int d)
 {
