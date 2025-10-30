@@ -5,13 +5,15 @@ using namespace std;
 int rn(int y);
 int dc(int y,int m,int d);
 int md(int y,int m);
+bool inte(double d);
 
 
 int main()
 {
-    int y,m,d;
+    int y,m;
+    double d;
     cin>>y>>m>>d;
-    if (d >= 1 && d <= md(y,m) && y > 0 && m >= 1 && m <= 12)
+    if (d >= 1 && d <= md(y,m) && y > 0 && m >= 1 && m <= 12 && inte(d))
     {
         printf("这是%i年的第%i天", y,dc(y,m,d));
     }
@@ -51,7 +53,6 @@ int dc(int y,int m,int d)
             case 11:sum = 305 + d;break;
             case 12:sum = 335 + d;break;
         }
-        return sum;
     }
     else
     {
@@ -84,4 +85,9 @@ int rn(int y)
     {
         return 0;
     }
+}
+bool inte(double d)
+{
+    if (d - (int)d == 0) return true;
+    else return false;
 }
