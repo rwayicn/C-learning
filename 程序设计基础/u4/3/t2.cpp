@@ -22,5 +22,5 @@ int main()
         i++;
         }
     }
-    if (i = 0) cout<<"No result"<<endl;
+    if (i == 0) cout<<"No result"<<endl;
 }
