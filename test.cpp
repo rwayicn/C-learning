@@ -1,25 +1,22 @@
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 using namespace std;
 
-float power(int x,int n)
-{
-    double t = fabs(n);
-    float pow = 1;
-    while(t--) pow *= x;
-    if(n > 0)
-    return pow;
-    else
-    return 1 / pow; 
+void FacPrimely(int n) {
+    if (n == 1) return; // 递归终止条件：1无需分解
+    for (int k = 2; k <= sqrt(n); ++k) { // 从2开始尝试最小质因数
+        if (n % k == 0) { // k是n的最小质因数
+            cout << k << "*";
+            FacPrimely(n / k); // 递归分解n/k
+            return;
+        }
+    }
+    cout << n;
 }
 
-int main()
-{
-    int n = -3;
-    float x = 4.6;
-    char c = 'a';
-    cout<<"power("<<x<<','<<n<<")="<<power(x,n)<<endl;
-    cout<<"power("<<c<<','<<n<<")="<<power(c,n)<<endl;
-    cout<<"power("<<n<<','<<x<<")="<<power(n,x)<<endl;
+int main() {
+    int x;
+    cin >> x;
+    cout << x << "=";
+    FacPrimely(x);
 }
