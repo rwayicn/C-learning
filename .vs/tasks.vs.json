@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "任务-程序设计基础",
+      "appliesTo": "程序设计基础/",
+      "type": "launch"
+    }
+  ]
+}
