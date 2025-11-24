@@ -1,22 +1,25 @@
+#include <math.h>
 #include <iostream>
-#include <cmath>
+#include <iomanip>
+#define PI 3.14159265
 using namespace std;
 
-void FacPrimely(int n) {
-    if (n == 1) return; // 递归终止条件：1无需分解
-    for (int k = 2; k <= sqrt(n); ++k) { // 从2开始尝试最小质因数
-        if (n % k == 0) { // k是n的最小质因数
-            cout << k << "*";
-            FacPrimely(n / k); // 递归分解n/k
-            return;
-        }
-    }
-    cout << n;
+void printline(int x,int c)
+{
+    
 }
 
-int main() {
-    int x;
-    cin >> x;
-    cout << x << "=";
-    FacPrimely(x);
+void printsin(int x,int h)
+{
+    for (int i = 0;i <= h;i++)
+    {
+        cout << setw(x - x * sin(PI * ((double)i * 2 / h)) + 1) << '*' << endl;
+    }
+}
+
+int main()
+{
+    int x,h;
+    cin >> x >> h;
+    printsin(x,h);
 }
