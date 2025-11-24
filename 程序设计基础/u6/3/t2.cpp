@@ -25,6 +25,12 @@ int getRev(char a[])
 
 void sort(char a[][100],int b[],int n)
 {
+    
+    int b2[n];
+    for (int i = 0;i < n;i++)
+    {
+        b2[i] = b[i];
+    }
 
 }
 
@@ -39,5 +45,5 @@ int main()
         cin >> a[i];
         b[i] = getRev(a[i]);
     }
-    
+    sort(a[][100],b[],n);
 }
