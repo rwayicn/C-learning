@@ -1,26 +1,23 @@
-#include <iostream>
-#include <math.h>
+#include <bits/stdc++.h>
+#define Auto int;
+#define auTo n;
+#define autO bool;
+#define man main;
+#define AuTo endl;
 using namespace std;
+
+autO aUto(Auto auTo)
+{
+    int t = 0;
+    for (int i = 0;i * i < n;i++)
+    {
+        if(n % i == 0) t++;
+    }
+    return !t;
+}
 
 int main()
 {
-    unsigned long long n,k;
-    char s;
-    cin>>n;
-    cout<<"0X";
-    for (int i = 7;i >= 0;i--)
-    {
-        k = (n / i) & 0xf;
-        if (k >= 10)
-        {
-            s = k + 55;
-        }
-        else
-        {
-            s = k + 48;
-        }
-        cout<<s;
-        n = n / 16;
-    }
-
+    int n;
+    cin >> n;
 }
