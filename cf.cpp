@@ -1,31 +1,55 @@
-//
-// Created by rwayicn on 2026/3/1.
-//
-
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-int main()
+struct card {
+    int colour = 0, num;
+};
+
+bool cmp(card a, card b)
 {
-    int n;
+    return a.num < b.num;
+}
+
+int main ()
+{
+    int n, sum;
     cin >> n;
-    for (int i = 0;i < n;i++) {
-        int sum, max, ans = 1, temp;
+    for (int i = 0;i < n;i++)
+    {
         cin >> sum;
-        cin >> max;
-        for (int i = 1;i < sum;i++)
+        card a[sum];
+        bool isred = true;
+        for (int i = 0;i < sum;i++)
         {
-            cin >> temp;
-            if (temp > max)
+            cin >> a[i].num;
+            if (isred)
             {
-                max = temp;
-                ans = 1;
+                a[i].colour = 1;
+                isred = !isred;
             }
-            else if (temp == max)
+            else
             {
-                ans++;
+                isred = !isred;
             }
         }
-        cout << ans << endl;
+        sort(a, a + sum, cmp);
+        bool iscor = true;
+        for (int i = 0;i < sum - 1;i++)
+        {
+            if (a[i].colour == a[i + 1].colour)
+            {
+                iscor = false;
+                break;
+            }
+        }
+        if (iscor)
+        {
+            cout << "yes\n";
+        }
+        else
+        {
+            cout << "no\n";
+        }
     }
 }
