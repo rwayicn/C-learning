@@ -1,36 +1,62 @@
-#include <iostream>
-#include <math.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-bool zs(long long m)
-{
-    long long t,i;
-    for (t = 0,i = 2;i < sqrt(m);i++)
-    {
-        if (m % i == 0)
-        t++;
-    }
-    return !t;
-}
 
 int main()
 {
-    long long n,num;
-    cin>>n;
-    num = n;
-    for (long long i = 2;i < n;)
-    {
-        if (num % i == 0)
+    int n, m, h, maxx = 0, maxy = 0, maxn = 0, sum = 0;
+    cin >> n >> m >> h;
+    int a[n][m], b[n][m];
+    for (int i = 0;i < n;i++)
+        for (int j = 0;j < m;j++)
         {
-            num = num / i;
-            if (zs(i))
+            cin >> a[i][j];
+            b[i][j] = 0;
+        }
+    for (int i = 0;i < n;i++)
+    {
+        for (int j = 0;j < m;j++)
+        {
+            if (a[i][j] != 0)
             {
-            cout<<i<<'*';
-            i = 2;
+                continue;
+            }
+            for (int x = j;x < m;x++)
+            {
+                if (a[i][x] >= h)
+                    break;
+                if (a[i][x] < 0)
+                    b[i][j]++;
+            }
+            for (int x = j;x >= 0;x--)
+            {
+                if (a[i][x] >= h)
+                    break;
+                if (a[i][x] < 0)
+                    b[i][j]++;
+            }
+            for (int x = i;x < n;x++)
+            {
+                if (a[x][j] >= h)
+                    break;
+                if (a[x][j] < 0)
+                    b[i][j]++;
+            }
+            for (int x = i;x >= 0;x--)
+            {
+                if (a[x][j] >= h)
+                    break;
+                if (a[x][j] < 0)
+                    b[i][j]++;
+            }
+            if (b[i][j] >= 3)
+                sum++;
+            if (maxn < b[i][j])
+            {
+                maxn = b[i][j];
+                maxx = j;
+                maxy = i;
             }
         }
-        else
-        i++;
     }
-    cout<<"\b";
+    cout << sum << "\n" << maxy << ' ' << maxx;
 }
