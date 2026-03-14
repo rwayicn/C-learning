@@ -3,29 +3,26 @@ using namespace std;
 
 int main()
 {
-    int a[1005], n, sum = 3, c = 1;
-    cin >> a[1] >> a[2] >> n;
-    while (sum <= n)
+    int t;
+    cin >> t;
+    for (int i = 0;i < t;i++)
     {
-        int t;
-        if (t = (a[c + 1] * a[c]) / 10)
+        int n, ans = 0;
+        cin >> n;
+        string s;
+        cin >> s;
+        if (s == "0" || s == "00")
         {
-            a[sum++] = t;
-            a[sum] = a[c] * a[c + 1] % 10;
-            sum++;
-            c++;
-            continue;
+            cout << "1\n";
         }
-        a[sum] = a[c] * a[c + 1];
-        sum++;
-        c++;
-    }
-    for (int i = 1;i <= n;i++)
-    {
-        cout << a[i];
-        if (i != n)
+        while (s.find("000") != string::npos)
         {
-            cout << ' ';
+            s[s.find("000") + 1] = '1';
         }
+        for (int i = 0;i < n;i++)
+        {
+            ans += s[i] - '0';
+        }
+        cout << ans << endl;
     }
 }
